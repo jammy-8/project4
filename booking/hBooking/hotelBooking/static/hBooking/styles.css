@@ -1,0 +1,30 @@
+.hero {
+    /* display: flex; */
+    background-color: brown;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.hotel-list {
+    background-color: lightblue;
+}
+
+.about-us {
+    background-color: lightgreen;
+}
+
+.footer {
+    background-color: lightgray;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.hero-text {
+    color: white;
+    text-align: center;
+    padding-top: 7%;
+}
+
+h2 {
+    color: red;
+}
