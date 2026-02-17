@@ -3,26 +3,28 @@
 
 {% block content %}
 
-<div class="hero h-75">
-    <div class="hero-text container text-center align-top">
-        <h1>Welcome to the Hotel Booking App</h1>
-        <p>Book your stay with us!</p>
+<section class="hero">
+    <div class="hero-content h-100">
+        <div class="hero-text container text-center">
+            <h1>Welcome to the Hotel Booking App</h1>
+            <p>Book your stay with us!</p>
+        </div>
     </div>
-    <div class="container-fluid text-center align-top">
-        <form class="d-flex justify-content-center align-items-center h-50" role="search">
-            <input class="form-control me-1 w-50" type="search" placeholder="Search for hotels..." aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+</section>
+
+<section class="hotel-offers container mt-5 h-100">
+    <div class="hotel-list-content container">
+        <h1>Hotel offers</h1>
     </div>
-</div>
-<div class="hotel-list container mt-5 h-75 ">
-    <h1>Hotel List</h1>
-</div>
-<div class="about-us mt-5 h-50">
-    <h2>About Us</h2>
-    <p>We are a leading hotel booking platform offering the best deals and services.</p>
-</div>
-<div class="footer">
-    <p>&copy; 2024 Hotel Booking App. All rights reserved.</p>
-</div>
+</section>
+
+<section class="container about-us text-end ">
+    <div class="about-us-content mt-5 mb-5 h-50">
+        <h2>About Us</h2>
+        <p>We are a leading hotel booking platform offering the best deals and services.</p>
+    </div>
+</section>
+
+
+
 {% endblock %}

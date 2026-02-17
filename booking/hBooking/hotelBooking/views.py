@@ -8,3 +8,6 @@ def hotelBooking(request):
 
 def index(request):
     return render(request, 'hBooking/index.html')
+
+def booking(request):
+    return render(request, 'hBooking/booking.html')

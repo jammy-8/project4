@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .hero {
     /* display: flex; */
     background-color: brown;
@@ -5,7 +9,12 @@
     /* justify-content: center; */
 }
 
-.hotel-list {
+.hero-text {
+    top: 25%;
+    position: relative;
+}
+
+.hotel-offers {
     background-color: lightblue;
 }
 
@@ -27,4 +36,51 @@
 
 h2 {
     color: red;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-animate {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-animate::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-animate:hover::after {
+    width: 100%;
+}
+
+.footer {
+    /* position:sticky; */
+    bottom: 0;
+    width: 100%;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.book-hotel {
+    border: 1px solid purple;
+    border-radius: 5px;
+    background-color: purple;
 }
