@@ -15,6 +15,22 @@
 <section class="hotel-offers container mt-5 h-100">
     <div class="hotel-list-content container">
         <h1>Hotel offers</h1>
+        {% for h in hotelTypesList %}
+            <div class="hotel-item row mb-4">
+                <div class="col-md-4">
+                    {% if h.hotel_img %}
+                    <img src="{{ h.hotel_img }}" alt="{{ h.hotel_type }}" class="img-fluid">
+                    {% else %}
+                    <img src="{% static 'hBooking/images/default-hotel.jpg' %}" alt="Default Hotel Image" class="img-fluid">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <h2>{{ hotel.hotel_type }}</h2>
+                    <p>Book now to enjoy our exclusive offers!</p>
+                </div>
+            {% empty %}
+                <p>No hotel offers available at the moment. Please check back later.</p>
+            {% endfor %}
     </div>
 </section>
 
