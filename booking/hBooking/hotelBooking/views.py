@@ -50,13 +50,13 @@ def index(request):
     hTypesObj = hotelTypes.objects.all()
     hotelTypesList = []
     for hType in hTypesObj:
-        img = _process_image(hType.hotel_img, max_width=200, max_height=200)
         hotelTypesList.append({
             'hotel_id': hType.hotel_id,
             'hotel_type': hType.hotel_type,
-            'hotel_img': img
+            'hotel_img': hType.hotel_img
         })
     return render(request, 'hBooking/index.html', {'hotelTypesList': hotelTypesList})
 
 def booking(request):
-    return render(request, 'hBooking/booking.html')
+    hotel_types = hotelTypes.objects.all()
+    return render(request, 'hBooking/booking.html', {'hotel_types': hotel_types})

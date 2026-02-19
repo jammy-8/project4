@@ -7,37 +7,46 @@
     <div class="hero-content h-100">
         <div class="hero-text container text-center">
             <h1>Welcome to the Hotel Booking App</h1>
-            <p>Book your stay with us!</p>
+            <h3>Book your stay with us!</h3>
         </div>
     </div>
 </section>
 
-<section class="hotel-offers container mt-5 h-100">
-    <div class="hotel-list-content container">
-        <h1>Hotel offers</h1>
-        {% for h in hotelTypesList %}
+<section class="hotel-offers container mt-5 h-75">
+    <h1 class="text-center mt-5 mb-5">Hotel offers</h1>
+    <div class="hotel-list-content container text-center">
             <div class="hotel-item row mb-4">
                 <div class="col-md-4">
-                    {% if h.hotel_img %}
-                    <img src="{{ h.hotel_img }}" alt="{{ h.hotel_type }}" class="img-fluid">
-                    {% else %}
-                    <img src="{% static 'hBooking/images/default-hotel.jpg' %}" alt="Default Hotel Image" class="img-fluid">
-                    {% endif %}
+                    <img src="{% static 'hBooking/img/standard.jpg' %}" alt="Standard" class="img-fluid room-img">
+                    <h2 class="room-type mt-4">Standard</h2>
+                    <p class="room-text mt-4"> A cozy and practical space featuring a comfortable bed, private bathroom, air conditioning, and free Wi-Fi. Perfect for solo travelers or short stays.</p>
                 </div>
-                <div class="col-md-8">
-                    <h2>{{ hotel.hotel_type }}</h2>
-                    <p>Book now to enjoy our exclusive offers!</p>
+                <div class="col-md-4">
+                    <img src="{% static 'hBooking/img/couple.jpg' %}" alt="couple" class="img-fluid room-img">
+                    <h2 class="room-type mt-4">Couple</h2>
+                    <p class="room-text mt-4">A romantic and intimate space designed for couples, featuring a comfortable double bed, private bathroom, cozy seating area, and soft lighting to create a warm and inviting atmosphere.</p>
                 </div>
-            {% empty %}
-                <p>No hotel offers available at the moment. Please check back later.</p>
-            {% endfor %}
-    </div>
+                <div class="col-md-4">
+                    <img src="{% static 'hBooking/img/deluxe.jpg' %}" alt="deluxe" class="img-fluid room-img">
+                    <h2 class="room-type mt-4">Deluxe</h2>
+                    <p class="room-text mt-4">A luxurious and spacious room offering premium amenities such as a king-size bed, private bathroom with a bathtub, a seating area, a mini-bar, and stunning views. Perfect for guests seeking an elevated experience.</p>
+            </div>    
+        </div>
 </section>
 
-<section class="container about-us text-end ">
+<section class="container about-us">
     <div class="about-us-content mt-5 mb-5 h-50">
-        <h2>About Us</h2>
-        <p>We are a leading hotel booking platform offering the best deals and services.</p>
+        <div class="row">
+            <div class="col-md-6 text-center ">
+                <div class="about-us-img-container"> 
+                    <img src="{% static 'hBooking/img/about1.jpg' %}" alt="aboutus" class="img-fluid about-us-img">
+                </div>
+            </div>
+            <div class="col-md-6 text-end about-us-text">
+                <h2>About Us</h2>
+                <p class="mt-5">We are dedicated to providing comfortable stays and exceptional service for every guest. Our hotel blends modern comfort with warm hospitality to create a relaxing and memorable experience. Whether you're traveling for business or leisure, we’re here to make you feel at home.</p>
+            </div>
+        </div>
     </div>
 </section>
 

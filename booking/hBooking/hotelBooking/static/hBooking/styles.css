@@ -4,28 +4,34 @@ body {
 
 .hero {
     /* display: flex; */
+    height: 100vh;
     background-color: brown;
-    /* align-items: center; */
-    /* justify-content: center; */
+    background-image: url('../hBooking/img/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
 
 .hero-text {
     top: 25%;
     position: relative;
-}
-
-.hotel-offers {
-    background-color: lightblue;
-}
-
-.about-us {
-    background-color: lightgreen;
+    z-index: 2;
 }
 
 .footer {
     background-color: lightgray;
     text-align: center;
     padding: 10px 0;
+    position: relative;
 }
 
 .hero-text {
@@ -34,14 +40,11 @@ body {
     padding-top: 7%;
 }
 
-h2 {
-    color: red;
-}
-
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 10%;
     z-index: 1000;
 }
 
@@ -63,7 +66,13 @@ h2 {
 }
 
 .nav-animate:hover::after {
+    color: white;
     width: 100%;
+}
+
+.navbar.scrolled {
+    background-color: black;
+    color: black;
 }
 
 .footer {
@@ -83,4 +92,45 @@ h2 {
     border: 1px solid purple;
     border-radius: 5px;
     background-color: purple;
+}
+
+.book-hotel {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.room-img {
+    width: 100%;
+    height: 75%;
+}
+
+.room-type .room-text {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.hotel-item-content {
+    background-color: blue;
+}
+
+.about-us-img {
+    height: 40%;   
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+.about-us-text {
+    margin-top: 5%;
+    padding-right: 5%;
+}
+
+.about-us {
+    margin-top: 10%;
+    height: auto;
 }
