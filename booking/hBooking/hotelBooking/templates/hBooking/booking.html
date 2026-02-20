@@ -37,16 +37,17 @@
                         <input type="date" class="form-control" id="check-out" name="check-out" required>
                     </div>
                 </div>
-            <div class="dropdown mt-3">
-                <label for="hotel-type" class="form-label">Hotel Type</label>
-                <select class="form-select" name="room">
-                    <option selected disabled>Choose a hotel type</option>
-                    {% for h in hotel_types %}
+                <div class="dropdown mt-3">
+                    <label for="hotel-type" class="form-label">Hotel Type</label>
+                    <select class="form-select" name="room" id="hotel-type" required>
+                        <option value="" selected disabled>Choose a hotel type</option>
+                        {% for h in hotel_types %}
                         <option value="{{ h.hotel_id }}">{{ h.hotel_type }}</option>
-                    {% endfor %}
-                </select>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
     </div>
 
