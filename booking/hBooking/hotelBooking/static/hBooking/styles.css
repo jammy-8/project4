@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-image: url('../hBooking/img/bg.jpg');;
 }
 
 .hero {
@@ -89,9 +90,9 @@ body {
 }
 
 .book-hotel {
-    border: 1px solid purple;
+    border: 1px solid #000068;
     border-radius: 5px;
-    background-color: purple;
+    background-color: #000068;
 }
 
 .book-hotel {
@@ -115,6 +116,12 @@ body {
     background-color: blue;
 }
 
+.hotel-offers {
+    padding-top: 5%;
+    margin-top: 10%;
+    height: auto;
+}
+
 .about-us-img {
     height: 40%;   
     align-items: center;
@@ -131,6 +138,17 @@ body {
 }
 
 .about-us {
+    padding-top: 5%;
     margin-top: 10%;
     height: auto;
+}
+
+.booking-container {
+    padding-top: 5%;
+    margin-top: 10%;
+}
+
+.booking-success-container {
+    padding-top: 5%;
+    margin-top: 10%;
 }

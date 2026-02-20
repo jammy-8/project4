@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.db import models
 from django.http import HttpResponse
 import base64
@@ -81,6 +82,9 @@ def booking_view(request):
             hotel_type=hotel_type
         )
 
-        return HttpResponse("Booking successful!")
+        return redirect('booking_success')
     
     return render(request, 'hBooking/booking.html', {'hotel_types': hotel_types})
+
+def booking_success(request):
+    return render(request, 'hBooking/booking_success.html')
