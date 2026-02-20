@@ -3,7 +3,7 @@ from django.db import models
 from django.http import HttpResponse
 import base64
 from io import BytesIO
-from .models import hotelTypes
+from .models import booking, hotelTypes
 
 try:
     from PIL import Image
@@ -57,6 +57,30 @@ def index(request):
         })
     return render(request, 'hBooking/index.html', {'hotelTypesList': hotelTypesList})
 
-def booking(request):
+def booking_view(request):
     hotel_types = hotelTypes.objects.all()
+
+    if request.method == 'POST':
+        first_name = request.POST.get('firstname')
+        last_name = request.POST.get('lastname')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone')
+        check_in_date = request.POST.get('check-in')
+        check_out_date = request.POST.get('check-out')
+        hotel_type_id = request.POST.get('room')
+
+        hotel_type = hotelTypes.objects.get(hotel_id=hotel_type_id)
+
+        booking.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone_number=phone_number,
+            check_in_date=check_in_date,
+            check_out_date=check_out_date,
+            hotel_type=hotel_type
+        )
+
+        return HttpResponse("Booking successful!")
+    
     return render(request, 'hBooking/booking.html', {'hotel_types': hotel_types})
