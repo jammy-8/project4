@@ -68,6 +68,15 @@ __Validator Testing__
 
 ## Deployment
 
+- The site was deployed to Heroku. The steps to deploy are as follows:
+  - In Heroku dashboard, click on create app
+  - Name your app then you will be www to the dashboard for the app.
+  - Click on the deploy tab, then select deployment method. I chose connect to Github.
+  - After connecting to github, Search for the repository that you would like to deploy and select it.
+  - Under manual deployment and click deploy. Deployment successful if it says "your app has been deploy" with a view button under it.
+ 
+The live link can be found here - https://project-4-hotel-booking-e054ce5e1083.herokuapp.com
+
 ## Credits
 
 __Content__
