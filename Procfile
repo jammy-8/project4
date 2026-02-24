@@ -1,2 +1,2 @@
-release: cd booking/hBooking && python manage.py migrate
-web: gunicorn --chdir booking hBooking.hBooking.wsgi:application
+release: python booking/hBooking/manage.py migrate
+web: gunicorn --chdir booking/hBooking hBooking.wsgi:application --log-file -
