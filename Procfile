@@ -1,2 +1,2 @@
-release: python manage.py migrate
-web: gunicorn hBooking.swgi --log-file=-
+release: cd booking && python manage.py migrate
+web: cd booking && gunicorn hBooking.wsgi --log-file=-
