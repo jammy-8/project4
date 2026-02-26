@@ -1,4 +1,4 @@
-# Project 4
+# Albergo Star
 
 Albergo is a modern and user-friendly hotel booking website designed to make reserving your perfect stay simple and convenient. With a clean interface, and a seamless reservation process, Albergo allows guests to explore accommodations, compare choices, and book with confidence. Whether for business or leisure, Albergo provides a smooth and reliable experience from browsing to checkout.
 
