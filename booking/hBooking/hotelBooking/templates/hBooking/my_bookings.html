@@ -1,0 +1,72 @@
+{% extends "hBooking/base.html" %}
+{% load static %}
+{% block title %}My Bookings{% endblock %}
+
+{% block content %}
+
+{% for b in bookings %}
+<div class="container booking-wrapper">
+    <div class="card mb-3 p-3">
+        <p><strong>Check-in:</strong> {{ b.check_in_date }}</p>
+        <p><strong>Check-out:</strong> {{ b.check_out_date }}</p>
+        <p><strong>Room:</strong> {{ b.hotel_type }}</p>
+
+        <a href="{% url 'update_bookings' b.booking_id %}" class="btn btn-warning">
+            Edit
+        </a>
+
+        <button class="btn btn-danger" 
+                data-bs-toggle="modal" 
+                data-bs-target="#deleteModal{{ b.booking_id }}">
+            Delete
+        </button>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal{{ b.booking_id }}" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Booking</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        Are you sure you want to delete this booking?
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+
+        <form method="POST" action="{% url 'delete_booking' b.booking_id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">
+            Delete
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% empty %}
+<div class="container empty-wrapper mt-5">
+    <div class="card mb-3 p-3 text-center">
+    <h4>No Bookings</h4>
+    <p>No Bookings yet, Start Booking a hotel.</p>
+
+    <a href="{% url 'booking' %}" class="btn btn-primary mt-3">
+        Book a Hotel
+    </a>
+    </div>
+</div>
+{% endfor %}
+
+
+
+{% endblock %}

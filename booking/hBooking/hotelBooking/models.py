@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -20,10 +20,8 @@ class hotelTypes(models.Model):
 
 class booking(models.Model):
     booking_id = models.AutoField(primary_key=True, db_column='booking_id')
-    first_name = models.CharField(max_length=255, db_column='first_name')
-    last_name = models.CharField(max_length=255, db_column='last_name')
-    email = models.EmailField(db_column='email')
-    phone_number = models.CharField(max_length=20, db_column='phone_number')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=20, db_column='phone_number', null=True)
     check_in_date = models.DateField(db_column='check_in_date')
     check_out_date = models.DateField(db_column='check_out_date')
     hotel_type = models.ForeignKey(hotelTypes, db_column='hotel_type', on_delete=models.CASCADE)
@@ -33,4 +31,4 @@ class booking(models.Model):
         managed = True
 
     def __str__(self):
-        return f'Booking {self.booking_id} for {self.first_name} {self.last_name} at {self.hotel_type} on {self.check_in_date} to {self.check_out_date}'
+        return f'Booking {self.booking_id} for {self.user.first_name} {self.user.last_name} at {self.hotel_type} on {self.check_in_date} to {self.check_out_date}'

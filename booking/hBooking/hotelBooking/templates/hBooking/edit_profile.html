@@ -1,0 +1,57 @@
+{% extends "hBooking/base.html" %}
+{% load static %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+
+<div class="container profile-wrapper">
+  <div class="profile-panel">
+    <h2>Edit Profile</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    
+    <form method="post" id="profile-form" action="{% url 'update_profile' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_username" class="form-label">Username</label>
+            <div class="edit-form">{{ form.username }}</div>
+            {% if form.username.help_text %}
+                <small id="id_username_helptext" class="help_text">{{ form.username.help_text }}</small>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="id_email" class="form-label">Email</label>
+            <div class="edit-form">{{ form.email }}</div>
+        </div>
+
+        <!-- <div class="mb-3">
+            <label for="id_phone_number" class="form-label">Phone Number (optional)</label>
+            <div class="edit-form"></div>
+        </div> -->
+
+        <div class="form-group">
+            <label for="password1" class="form-label">New Password</label>
+            <div class="edit-form">{{ form.password1 }}</div>
+            {% if form.password1.help_text %}
+                <small id="id_password1_helptext" class="help_text">{{ form.password1.help_text }}</small>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="password2" class="form-label">Confirm New Password</label>
+            <div class="edit-form">{{ form.password2 }}</div>
+            {% if form.password2.help_text %}
+                <small id="id_password2_helptext" class="help_text">{{ form.password2.help_text }}</small>
+            {% endif %}
+        </div>
+
+        <button type="submit" name="save-profile" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

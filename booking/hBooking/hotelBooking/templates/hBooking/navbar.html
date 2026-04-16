@@ -15,9 +15,25 @@
         <li class="nav-item fs-4">
           <a class="nav-link nav-animate text-white ms-5" href="#about-us">About us</a>
         </li>
+
+        {% if user.is_authenticated %}
         <li class="nav-item ms-auto">
           <a class="nav-link book-hotel text-white" href="{% url 'booking' %}">Book a Hotel</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'my_bookings' %}">My Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link edit_profile text-white" href="{% url 'edit_profile' %}"> {{ user.username }} </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link logout text-white" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item ms-auto">
+          <a class="nav-link login text-white" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>

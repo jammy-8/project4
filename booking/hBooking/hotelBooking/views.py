@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import models
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 import base64
 from io import BytesIO
-from .models import booking, hotelTypes
+from .forms import CustomUserCreationForm, ProfileForm
+from .models import booking, hotelTypes, User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import  authenticate, login, logout, update_session_auth_hash
 
 try:
     from PIL import Image
@@ -58,14 +62,56 @@ def index(request):
         })
     return render(request, 'hBooking/index.html', {'hotelTypesList': hotelTypesList})
 
+def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)
+            messages.success(request, f'Welcome back, {user.username}!')
+            next_url = request.POST.get('next') or request.GET.get('next') or 'index'
+            return redirect(next_url)
+        else:
+            messages.error(request, 'Invalid username or password')
+
+    return render(request, 'hBooking/login.html')
+
+def signup_view(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(request, username=username, password=raw_password)
+            login(request, user)
+            messages.success(request, 'Account created successfully. Welcome!')
+            return redirect('login')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = CustomUserCreationForm()
+
+    return render(request, 'hBooking/signup.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    messages.info(request, 'You have been logged out.')
+    return redirect('index')
+
+@login_required
 def booking_view(request):
     hotel_types = hotelTypes.objects.all()
 
     if request.method == 'POST':
-        first_name = request.POST.get('firstname')
-        last_name = request.POST.get('lastname')
-        email = request.POST.get('email')
-        phone_number = request.POST.get('phone')
         check_in_date = request.POST.get('check-in')
         check_out_date = request.POST.get('check-out')
         hotel_type_id = request.POST.get('room')
@@ -73,10 +119,7 @@ def booking_view(request):
         hotel_type = hotelTypes.objects.get(hotel_id=hotel_type_id)
 
         booking.objects.create(
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            phone_number=phone_number,
+            user = request.user,
             check_in_date=check_in_date,
             check_out_date=check_out_date,
             hotel_type=hotel_type
@@ -88,3 +131,70 @@ def booking_view(request):
 
 def booking_success(request):
     return render(request, 'hBooking/booking_success.html')
+
+
+def edit_profile_view(request):
+    form = ProfileForm(instance=request.user)
+    return render(request, 'hbooking/edit_profile.html', {'form' : form})
+
+def update_profile_view(request):
+    user = request.user
+    
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            user = form.save(commit=False)
+
+            new_password = form.cleaned_data.get('password1')
+            if new_password:
+                user.set_password(new_password)
+
+            user.save()
+
+            if new_password:
+                update_session_auth_hash(request, user)
+
+            messages.success(request, 'Profile has been updated')
+        else:
+            messages.error(request, "Please correct errors")
+    return redirect('edit_profile')
+
+def my_bookings(request):
+    user_bookings = booking.objects.filter(user=request.user)
+    return render(request, 'hBooking/my_bookings.html', {
+        'bookings': user_bookings,
+        'hotel_types': hotelTypes
+    })
+
+def update_booking_view(request, booking_id):
+    booking_obj = get_object_or_404(booking, booking_id=booking_id, user=request.user)
+    hotel_types = hotelTypes.objects.all()
+
+    if request.method == 'POST':
+        booking_obj.check_in_date = request.POST.get('check-in')
+        booking_obj.check_out_date = request.POST.get('check-out')
+
+        hotel_type_id = request.POST.get('room')
+        booking_obj.hotel_type = hotelTypes.objects.get(hotel_id=hotel_type_id)
+
+        booking_obj.save()
+
+        messages.success(request, "Booking has been updated")
+        return redirect('my_bookings')
+    
+    return render(request, 'hBooking/booking.html', {
+        'booking': booking_obj,
+        'hotel_types': hotel_types
+    })
+
+@login_required
+def delete_booking_view(request, booking_id):
+    booking_obj = get_object_or_404(booking, booking_id=booking_id, user=request.user)
+
+    if request.method == 'POST':
+        booking_obj.delete()
+        messages.success(request, "Booking deleted successfully")
+        return redirect('my_bookings')
+
+    return redirect('my_bookings')
+

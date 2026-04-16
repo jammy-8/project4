@@ -1,0 +1,42 @@
+{% extends "hBooking/base.html" %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-wrapper">
+  <div class="login-panel">
+    <h2>Sign in</h2>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="message {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <form method="post" id="login-form" novalidate>
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="id_username">Email</label>
+        <input id="id_username" name="username" class="form-control" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <label for="id_password">Password</label>
+        <input id="id_password" name="password" class="form-control" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary" id="login-btn">Sign in</button>
+      </div>
+    </form>
+
+    <div id="login-error-popup" class="form-popup hidden" role="alert" aria-hidden="true" aria-live="assertive" tabindex="-1">
+      <div class="popup-content">requires username or password</div>
+    </div>
+
+    <p class="mt-2">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+  </div>
+</div>
+{% endblock %}

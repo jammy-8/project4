@@ -2,30 +2,12 @@
 {% load static %}
 
 {% block content %}
-    <div class="booking-container container mt-5 h-100 text-white">
+    <div class="container booking-container mt-5 h-100 text-white">
         <h1>Booking</h1>
         <form method="post">
             {% csrf_token %}
             <div class="mb-3">
                 <div class="row">
-                    <div class="col">
-                        <label for="firstname" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" required>
-                    </div>
-                    <div class="col">
-                        <label for="lastname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" name="lastname" required>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="col">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phone" name="phone" required>
-                    </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col">
