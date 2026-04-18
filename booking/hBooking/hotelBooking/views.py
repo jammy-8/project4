@@ -135,7 +135,7 @@ def booking_success(request):
 
 def edit_profile_view(request):
     form = ProfileForm(instance=request.user)
-    return render(request, 'hbooking/edit_profile.html', {'form' : form})
+    return render(request, 'hBooking/edit_profile.html', {'form' : form})
 
 def update_profile_view(request):
     user = request.user
