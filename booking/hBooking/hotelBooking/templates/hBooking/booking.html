@@ -2,8 +2,18 @@
 {% load static %}
 
 {% block content %}
-    <div class="container booking-container mt-5 h-100 text-white">
+    <div class="container booking-container mt-5 h-100">
+        <div class="profile-panel">
         <h1>Booking</h1>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    {% if 'booking_create' in message.tags %}
+                        <li class="message {{ message.tags }}">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
         <form method="post">
             {% csrf_token %}
             <div class="mb-3">
@@ -12,7 +22,7 @@
                 <div class="row mt-3">
                     <div class="col">
                         <label for="check-in" class="form-label">Check in</label>
-                        <input type="date" class="form-control" id="check-in" name="check-in" required>
+                        <input type="date" class="form-control" id="check-in" name="check-in" min="{{ today }}" required>
                     </div>
                     <div class="col">
                         <label for="check-out" class="form-label">Check out</label>
@@ -31,6 +41,7 @@
                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </div>
         </form>
+        </div>
     </div>
 
 {% endblock %}

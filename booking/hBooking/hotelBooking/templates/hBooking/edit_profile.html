@@ -9,9 +9,13 @@
     <h2>Edit Profile</h2>
 
     {% if messages %}
+      <ul class="messages">
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+            {% if 'profile' in message.tags %}
+                <li class="message {{ message.tags }}">{{ message }}</li>
+            {% endif %}
         {% endfor %}
+      </ul>
     {% endif %}
     
     <form method="post" id="profile-form" action="{% url 'update_profile' %}">
@@ -36,18 +40,29 @@
         </div> -->
 
         <div class="form-group">
-            <label for="password1" class="form-label">New Password</label>
-            <div class="edit-form">{{ form.password1 }}</div>
-            {% if form.password1.help_text %}
-                <small id="id_password1_helptext" class="help_text">{{ form.password1.help_text }}</small>
+            <label for="id_old_password" class="form-label">Old Password</label>
+            {{ password_form.old_password }}
+            {{ password_form.old_password.errors }}
+            {% if password_form.old_password.help_text %}
+                <small id="id_password1_helptext" class="help_text">{{ password_form.old_password.help_text }}</small>
             {% endif %}
         </div>
 
         <div class="form-group">
-            <label for="password2" class="form-label">Confirm New Password</label>
-            <div class="edit-form">{{ form.password2 }}</div>
-            {% if form.password2.help_text %}
-                <small id="id_password2_helptext" class="help_text">{{ form.password2.help_text }}</small>
+            <label for="id_new_password1" class="form-label"> New Password</label>
+                {{ password_form.new_password1 }}
+                <!-- {{ password_form.new_password1.errors }} -->
+            {% if password_form.new_password1.help_text %}
+                <small id="id_password2_helptext" class="help_text">{{ password_form.new_password1.help_text }}</small>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="id_new_password2" class="form-label">Confirm New Password</label>
+                {{ password_form.new_password2 }}
+                <!-- {{ password_form.new_password2.errors }} -->
+            {% if password_form.new_password2.help_text %}
+                <small id="id_password2_helptext" class="help_text">{{ password_form.new_password2.help_text }}</small>
             {% endif %}
         </div>
 
