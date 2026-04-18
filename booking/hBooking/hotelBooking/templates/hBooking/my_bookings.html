@@ -5,7 +5,8 @@
 {% block content %}
 
 {% for b in bookings %}
-<div class="container booking-wrapper">
+
+<div class="container booking-container mt-5">
   <h1 class="text-center text-white">My Bookings</h1>
     {% if messages %}
       <ul class="messages">
@@ -16,6 +17,10 @@
           {% endfor %}
       </ul>
     {% endif %}
+</div>
+
+<div class="container booking-wrapper">
+
     <div class="card mb-3 p-3">
         <p><strong>Check-in:</strong> {{ b.check_in_date }}</p>
         <p><strong>Check-out:</strong> {{ b.check_out_date }}</p>
@@ -65,8 +70,12 @@
 </div>
 
 {% empty %}
-<div class="container empty-wrapper mt-5">
+<div class="container booking-container mt-5">
   <h1 class="text-center text-white">My Bookings</h1>
+</div>
+
+<div class="container empty-wrapper mt-5">
+
     <div class="card mb-3 p-3 text-center">
     <h4>No Bookings</h4>
     <p>No Bookings yet, Start Booking a hotel.</p>
