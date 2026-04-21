@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7o(v_q8ov1fx-jw8#vb#-6#sp*e+_$0q@98n3*=gp=)le$*5@5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
@@ -77,27 +77,27 @@ WSGI_APPLICATION = 'hBooking.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'hotelbooking',
-#         'USER': 'postgres',
-#         'PASSWORD': '1234',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd5oqe2uthn2hm5',
-        'USER': 'u8faqr12tapbr3',
-        'PASSWORD': 'p35d1b5c4a71e0860e067a907e50d7401d59cf96327d56c24a5ea4630217acfd0',
-        'HOST': 'c7b4i1efuvdata.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hotelbooking',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd5oqe2uthn2hm5',
+#         'USER': 'u8faqr12tapbr3',
+#         'PASSWORD': 'p35d1b5c4a71e0860e067a907e50d7401d59cf96327d56c24a5ea4630217acfd0',
+#         'HOST': 'c7b4i1efuvdata.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 
 

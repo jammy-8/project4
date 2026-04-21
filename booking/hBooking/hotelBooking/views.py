@@ -150,16 +150,34 @@ def update_profile_view(request):
         form = ProfileForm(request.POST, instance=request.user)
         password_form = PasswordChangeForm(request.user, request.POST)
 
-        if form.is_valid() and password_form.is_valid():
+        password_field_filled = (
+            request.POST.get('old_password') or
+            request.POST.get('new_password1') or
+            request.POST.get('new_password2')
+        )
+
+        if form.is_valid():
             # user = form.save(commit=False)
             form.save()
 
-            user = password_form.save()
-            update_session_auth_hash(request, user)
+            if password_field_filled:
+                if password_form.is_valid():
 
-            messages.success(request, 'Profile has been updated', extra_tags='profile')
+                    user = password_form.save()
+                    update_session_auth_hash(request, user)
+
+                    messages.success(request, 'Profile has been updated', extra_tags='profile')
+                else:
+                    messages.error(request, "Please correct errors", extra_tags='profile')
+            
+                    return redirect('edit_profile')
+                
+            else: 
+                messages.success(request, 'Profile has been updated', extra_tags='profile')
+        
         else:
-            messages.error(request, "Please correct errors", extra_tags='profile')
+            messages.error(request, "Please correct errors in profile", extra_tags='profile')
+
     return redirect('edit_profile')
 
 def my_bookings(request):
@@ -215,7 +233,6 @@ def update_booking_view(request, booking_id):
         'today': today
     })
 
-@login_required
 def delete_booking_view(request, booking_id):
     booking_obj = get_object_or_404(booking, booking_id=booking_id, user=request.user)
 
