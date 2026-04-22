@@ -275,7 +275,6 @@ class UpdateBookingViewTest(TestCase):
             hotel_type=self.hotel
         )
 
-    print()
 
     def test_update_booking_valid(self):
         self.client.login(username='test', password='12345')
