@@ -21,7 +21,7 @@ Albergo is a modern and user-friendly hotel booking website designed to make res
 - __Offers__
   - This section shows the user the different offers that the website provides.
  
-![Heading}(booking\hBooking\hotelBooking\static\hBooking\READM-ME-IMG\hero.png)
+![Heading](booking/READM-ME-IMG/offers.png)
 
 - __About us__
   - This section provides the user additional information about the team and the hotel.
