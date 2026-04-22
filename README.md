@@ -1,4 +1,4 @@
-# Albergo Star
+<img width="504" height="169" alt="image" src="https://github.com/user-attachments/assets/edc377ea-f0c5-4fe6-9d27-7d072407c528" /><img width="1017" height="790" alt="image" src="https://github.com/user-attachments/assets/fc41b65d-f5eb-4e6f-a6f8-db569d25016d" /><img width="1870" height="966" alt="image" src="https://github.com/user-attachments/assets/4624d02b-4441-47c3-b5eb-5e7e8464f2f0" /># Albergo Star
 
 Albergo is a modern and user-friendly hotel booking website designed to make reserving your perfect stay simple and convenient. With a clean interface, and a seamless reservation process, Albergo allows guests to explore accommodations, compare choices, and book with confidence. Whether for business or leisure, Albergo provides a smooth and reliable experience from browsing to checkout.
 
@@ -8,7 +8,7 @@ Albergo is a modern and user-friendly hotel booking website designed to make res
 ## Features
 
 - __Navigation Bar__
-  - Featured on all three pages, the navigation bar includes links to the Logo, Home Page, Offers, About Us and Booking page.
+  - Featured on all three pages, the navigation bar includes links to the Logo, Home Page, Offers, About Us and Login Page.
   
 
 ![Heading](booking/READM-ME-IMG/navbar.png)
@@ -28,19 +28,125 @@ Albergo is a modern and user-friendly hotel booking website designed to make res
 
 ![Heading](booking/READM-ME-IMG/about_us.png)
 
-- __Booking__
-  - This page allows the user to book a room by entering their personal details, selecting a check-in and check-out dates, and choosing a room type.
+
+- __Login Page__
+  - This page allows the user to login to their account.
+
+![Heading](booking/READM-ME-IMG/login.png)
+
+- __Sign up Page__
+  - This page allows the user to create an account. The user is asked to input their Username, First and Last name, Email and password.
+  - The password has restrictions that it should be atleast 8 characters long, can't be only numbers, and can't be common passwords.
  
-  ![Heading](booking/READM-ME-IMG/booking.png)
+![Heading](booking/READM-ME-IMG/sign_up.png)
+ 
+- __After Login__
+  - After logging in, Navigation bar changes to include the Book a hotel button, My Bookings button, user profile button, and Logout button.
+
+![Heading](booking/READM-ME-IMG/hero2.png)
+
+- __Booking__
+  - This page allows the user to book a room by selecting check-in and check-out dates, and choosing a room type.
+
+![Heading](booking/READM-ME-IMG/booking.png)
 
 - __Booking Success__
   - After submitting the form, the website will provide feedback by showing to the user that the submission was successful.
 
 ![Heading](booking/READM-ME-IMG/booking_success.png)
 
+- __My Bookings__
+  - Users can view their bookings in My Bookings. They can also either edit their bookings or cancel them.
+
+![Heading](booking/READM-ME-IMG/my_bookings.png)
+
+![Heading](booking/READM-ME-IMG/booking.png)
+
+![Heading](booking/READM-ME-IMG/cancel.png)
+
+- __Edit Profile__
+  - Users can update their username, email, and password.
+
+![Heading](booking/READM-ME-IMG/edit_profile.png)
+   
+
 ## Testing
 
-The website has been tested on different devices such as phone, desktop and notebooks. The sizes adjust as per device.
+The website has been tested with its different functionalities.
+
+- __Index View__
+
+![Heading](booking/READM-ME-IMG/index_test.png)
+
+![Heading](booking/READM-ME-IMG/index_test_result.png)
+
+- __Login Test__
+
+![Heading](booking/READM-ME-IMG/login_test.png)
+
+![Heading](booking/READM-ME-IMG/login_test_result.png)
+
+- __Sign up Test__
+
+![Heading](booking/READM-ME-IMG/sign_up_test1.png)
+
+![Heading](booking/READM-ME-IMG/sign_up_test2.png)
+
+![Heading](booking/READM-ME-IMG/sign_up_test_result.png)
+
+- __Logout Test__
+
+![Heading](booking/READM-ME-IMG/logout_test.png)
+
+![Heading](booking/READM-ME-IMG/logout_test_result.png)
+
+- __Booking Test__
+
+![Heading](booking/READM-ME-IMG/booking_test1.png)
+
+![Heading](booking/READM-ME-IMG/booking_test2.png)
+
+![Heading](booking/READM-ME-IMG/booking_test_result.png)
+
+- __Booking Success Test__
+
+![Heading](booking/READM-ME-IMG/booking_success_test.png)
+
+![Heading](booking/READM-ME-IMG/booking_success_test_result.png)
+
+- __My Booking Test__
+
+![Heading](booking/READM-ME-IMG/my_bookings_test1.png)
+
+![Heading](booking/READM-ME-IMG/my_bookings_test2.png)
+
+![Heading](booking/READM-ME-IMG/my_bookings_test_result.png)
+
+- __Update Booking Test__
+
+![Heading](booking/READM-ME-IMG/update_booking_test.png)
+
+![Heading](booking/READM-ME-IMG/update_booking_test_result.png)
+
+- __Cancel Booking Test__
+
+![Heading](booking/READM-ME-IMG/delete_booking_test.png)
+
+![Heading](booking/READM-ME-IMG/delete_booking_test_result.png)
+
+- __Edit Profile Test__
+
+![Heading](booking/READM-ME-IMG/edit_profile_test.png)
+
+![Heading](booking/READM-ME-IMG/edit_profile_test_result.png)
+
+- __Update Profile Test__
+
+![Heading](booking/READM-ME-IMG/update_profile_test1.png)
+
+![Heading](booking/READM-ME-IMG/update_profile_test2.png)
+
+![Heading](booking/READM-ME-IMG/update_profile_test_result.png)
 
 __Validator Testing__
 
